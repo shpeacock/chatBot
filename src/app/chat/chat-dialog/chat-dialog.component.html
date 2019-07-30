@@ -1,12 +1,22 @@
-<h1> Chat Bot Sucka !!!!</h1>
+<div class="container">
 
-<ng-container *ngFor = "let message of messages | async"> 
-  <div class ="message" [ngClass]="{'from' : message.sentBy === 'bot', 'to': message.sentBy === 'user' }">
-    {{message.content}}
+    <div class="row">
+      <div class="column"></div>
+      <div class="column">
+          <h1> Chat With SpenceBot</h1>
+
+          <ng-container *ngFor = "let message of messages | async"> 
+            <div class ="message" [ngClass]="{'from' : message.sentBy === 'bot', 'to': message.sentBy === 'user' }">
+              {{message.content}}
+            </div>
+          
+          </ng-container>
+          
+          <label for="nameField"> Type Yo Message</label>
+          <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text"><br>
+          <button (click)="sendMessage()"> SendIT</button>
+      </div>
+      <div class="column"></div>
+    </div>
+
   </div>
-
-</ng-container>
-
-<label for="nameField"> Type Yo Message</label>
-<input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text"><br>
-<button (click)="sendMessage()"> SendIT</button>
